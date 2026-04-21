@@ -1,17 +1,16 @@
-// script.js - Simple Interactivity
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Hamburger Menu Logic
+
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
+
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked
+
     document.querySelectorAll('.nav-links li a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Active Navigation Highlight on Scroll
     const sections = document.querySelectorAll('section, header');
     const navItems = document.querySelectorAll('.nav-links li a');
 
@@ -29,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            // Add a small offset to trigger earlier
+
             if (scrollY >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
@@ -41,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.add('active');
             }
         });
-        
-        // Sticky Navbar subtle border 
+
         const nav = document.querySelector('.navbar');
         if (window.scrollY > 50) {
             nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
