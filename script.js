@@ -1,7 +1,4 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
-
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -9,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
-
 
     document.querySelectorAll('.nav-links li a').forEach(link => {
         link.addEventListener('click', () => {
@@ -47,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.boxShadow = 'none';
         }
 
-        // Scroll to Top Button Visibility
         const scrollTopBtn = document.querySelector('#scrollTopBtn');
         if (window.scrollY > 300) {
             scrollTopBtn.classList.add('show');
@@ -56,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Scroll to Top Click Event
     const scrollTopBtn = document.querySelector('#scrollTopBtn');
     scrollTopBtn.addEventListener('click', () => {
         window.scrollTo({
@@ -65,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Theme Toggle Logic
     const themeToggle = document.querySelector('#theme-toggle');
     const currentTheme = localStorage.getItem('theme');
 
@@ -83,5 +76,4 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', 'light');
         }
     });
-
 });
