@@ -76,4 +76,95 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', 'light');
         }
     });
+
+    // Project Data for Modal
+    const projectData = {
+        edgeforge: {
+            title: 'EdgeForge',
+            image: 'Screenshot 2026-04-27 184549.png',
+            tags: ['React', 'Django'],
+            description: 'A full-stack trade journal platform built with React and Django. Designed for traders to track, analyze, and refine their trading performance with deep insights into trading patterns.',
+            live: 'https://edgeforge-nu.vercel.app/',
+            repo: 'https://github.com/Kidkasam/edgeforge'
+        },
+        kfits: {
+            title: 'Kfits',
+            image: 'Screenshot 2026-04-27 185310.png',
+            tags: ['React', 'Django'],
+            description: 'A premium menswear and sustainable fashion store developed using React and Django. This project delivers a high-converting shopping experience with a modern, responsive interface.',
+            live: '#',
+            repo: 'https://github.com/Kidkasam/ecommerce'
+        }
+    };
+
+    // Modal Logic
+    const modal = document.querySelector('#project-modal');
+    const openModalBtns = document.querySelectorAll('.open-modal');
+    const closeModalBtn = document.querySelector('.close-modal');
+
+    const openModal = (projectId) => {
+        const data = projectData[projectId];
+        if (!data) return;
+
+        document.querySelector('#modal-title').textContent = data.title;
+        document.querySelector('#modal-image').src = data.image;
+        document.querySelector('#modal-description').textContent = data.description;
+        
+        const liveBtn = document.querySelector('#modal-live-link');
+        if (data.live === '#') {
+            liveBtn.style.display = 'none';
+        } else {
+            liveBtn.style.display = 'inline-block';
+            liveBtn.href = data.live;
+        }
+        
+        document.querySelector('#modal-repo-link').href = data.repo;
+
+        const tagsContainer = document.querySelector('#modal-tags');
+        tagsContainer.innerHTML = '';
+        data.tags.forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'modal-tag';
+            span.textContent = tag;
+            tagsContainer.appendChild(span);
+        });
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    };
+
+    const closeModal = () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    };
+
+    openModalBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.target.closest('.project-card');
+            const projectId = card.getAttribute('data-project');
+            openModal(projectId);
+        });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Contact Form Handling
+    const contactForm = document.querySelector('#contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            
+            // For now, just show a success message
+            alert(`Thanks for reaching out, ${name}! This is a demo form, but in a real project, this would send an email.`);
+            contactForm.reset();
+        });
+    }
 });

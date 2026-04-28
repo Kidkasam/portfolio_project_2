@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Developer</title>
+    <title>Kidus Yonas | Portfolio</title>
     <meta name="description" content="Personal portfolio website showcasing my projects and skills.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 
 <body>
     <nav class="navbar">
-        <div class="logo">Portfolio.</div>
+        <div class="logo">Kidus.</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -42,7 +42,10 @@
             <p class="greeting">Hi, I am</p>
             <h1 class="name">Kidus Yonas</h1>
             <p class="subtitle">Building beautiful and functional web experiences.</p>
-            <a href="#projects" class="btn primary-btn">View My Work</a>
+            <div class="hero-btns">
+                <a href="#projects" class="btn primary-btn">View My Work</a>
+                <a href="kidus_CV.pdf" class="btn secondary-btn" download>Download CV</a>
+            </div>
         </div>
     </header>
 
@@ -50,11 +53,11 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Hello! I'm a passionate web developer dedicated to crafting modern and engaging digital experiences.
-                    I specialize in turning complex problems into elegant, user-friendly solutions.</p>
+                <p>Hello! I'm a passionate full-stack developer dedicated to crafting modern and engaging digital experiences.
+                    I specialize in building robust applications using React and Django, turning complex problems into elegant, user-friendly solutions.</p>
                 <br>
-                <p>With a strong foundation in HTML, CSS, and JavaScript, I am always learning and adapting to the
-                    latest web technologies to build efficient and scalable applications.</p>
+                <p>With a strong foundation in modern web technologies, I focus on creating efficient, scalable, and visually stunning 
+                    web applications that provide seamless user experiences across all devices.</p>
             </div>
             <div class="skills">
                 <div class="skill-tag">HTML5</div>
@@ -62,7 +65,7 @@
                 <div class="skill-tag">JavaScript</div>
                 <div class="skill-tag">React</div>
                 <div class="skill-tag">Django</div>
-                <div class="skill-tag">UI/UX Design</div>
+
             </div>
         </div>
     </section>
@@ -70,37 +73,24 @@
     <section id="projects" class="section projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="project-grid">
-            <div class="project-card">
+            <div class="project-card" data-project="edgeforge">
                 <div class="project-img">
-                    <img src="ecommerce.png" alt="E-Commerce Platform Mockup">
+                    <img src="Screenshot 2026-04-27 184549.png" alt="EdgeForge Platform Mockup">
                 </div>
                 <div class="project-info">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A full-stack e-commerce solution with modern UI, secure payment integration, and a seamless
-                        checkout experience.</p>
-                    <a href="#" class="btn secondary-btn">View Project</a>
+                    <h3>EdgeForge</h3>
+                    <p>A full-stack trade journal platform built with React and Django.</p>
+                    <button class="btn secondary-btn open-modal">View Details</button>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-project="kfits">
                 <div class="project-img">
-                    <img src="dashboard.png" alt="Task Management Dashboard Mockup">
+                    <img src="Screenshot 2026-04-27 185310.png" alt="Kfits Fashion Store Mockup">
                 </div>
                 <div class="project-info">
-                    <h3>Task Management Dashboard</h3>
-                    <p>A productivity web application featuring drag-and-drop boards, real-time updates, and team
-                        collaboration tools.</p>
-                    <a href="#" class="btn secondary-btn">View Project</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="weather.png" alt="Weather App Mockup">
-                </div>
-                <div class="project-info">
-                    <h3>Weather App</h3>
-                    <p>A responsive weather forecasting application that provides real-time data using external APIs and
-                        dynamic backgrounds.</p>
-                    <a href="#" class="btn secondary-btn">View Project</a>
+                    <h3>Kfits</h3>
+                    <p>A premium menswear and sustainable fashion store developed using React and Django.</p>
+                    <button class="btn secondary-btn open-modal">View Details</button>
                 </div>
             </div>
         </div>
@@ -111,9 +101,48 @@
         <div class="contact-card">
             <p>I'm currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my
                 best to get back to you!</p>
-            <a href="mailto:kidus6135@gmail.com" class="btn primary-btn btn-large">Say Hello</a>
+            
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn primary-btn btn-large">Send Message</button>
+            </form>
+
+            <div class="contact-direct">
+                <p>Or email me directly at:</p>
+                <a href="mailto:kidus6135@gmail.com" class="email-link">kidus6135@gmail.com</a>
+            </div>
         </div>
     </section>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img id="modal-image" src="" alt="Project Image">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Project Title</h2>
+                    <div id="modal-tags" class="modal-tags">
+                        <!-- Tags will be injected here -->
+                    </div>
+                    <p id="modal-description">Project description goes here.</p>
+                    <div class="modal-actions">
+                        <a href="#" id="modal-live-link" target="_blank" class="btn primary-btn">Live Demo</a>
+                        <a href="#" id="modal-repo-link" target="_blank" class="btn secondary-btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="formal-footer">
         <div class="footer-content">
