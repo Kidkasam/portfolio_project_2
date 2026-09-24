@@ -475,29 +475,51 @@ h1, h2, h3, h4 {
 .skills-wrapper {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 2rem;
+    padding: 2.2rem;
     border-radius: var(--radius-md);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .skills-category-title {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
     color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.skills-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skills-group-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--text-muted);
 }
 
 .skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.65rem;
 }
 
 .skill-tag {
-    padding: 0.55rem 1rem;
+    padding: 0.5rem 0.95rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 500;
     color: var(--text-primary);
     transition: var(--transition);
@@ -506,6 +528,7 @@ h1, h2, h3, h4 {
 .skill-tag:hover {
     border-color: var(--accent);
     color: var(--accent);
+    background: var(--accent-glow);
     transform: translateY(-2px);
 }
 
